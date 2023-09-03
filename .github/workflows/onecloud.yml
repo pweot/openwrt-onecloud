@@ -126,6 +126,7 @@ jobs:
           curl -L -o ./uboot.img https://github.com/shiyu1314/u-boot-onecloud/releases/download/build-20230901-0443/eMMC.burn.img
           ./AmlImg unpack ./uboot.img burn/
           echo "::endgroup::"
+          gunzip openwrt/bin/targets/*/*/*.gz
           diskimg=$(ls openwrt/bin/targets/*/*/*.img)
           loop=$(sudo losetup --find --show --partscan $diskimg)
           img_ext="openwrt.img"
@@ -230,9 +231,10 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: ${{ steps.tag.outputs.release_tag }}
         body_path: release.txt
-        files: ${{ env.FIRMWARE }}/*   
+        files: ${{ env.FIRMWARE }}/*
+        name: ${{ env.date2 }} ${{matrix.target}}内核
+        tag_name: ${{ env.date }}_${{matrix.target}}内核
 
     - name: Delete workflow runs
       uses: GitRML/delete-workflow-runs@main
