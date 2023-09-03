@@ -10,4 +10,4 @@ ssh登录
 resize2fs /dev/mmcblk1p2
 
 
-[下载刷机工具x](https://xd1314.lanzoul.com/iXHbz17bqjhc)
+[下载刷机工具](https://xd1314.lanzoul.com/iXHbz17bqjhc)
