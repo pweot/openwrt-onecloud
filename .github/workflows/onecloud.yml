@@ -23,7 +23,7 @@ env:
   REPO_URL: https://github.com/shiyu1314/lede
   REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: onecloud.config
+  CONFIG_FILE: ${{matrix.target}}.config
   DIY_P1_SH: diy-part1.sh
   DIY_P2_SH: diy-part2.sh
   UPLOAD_BIN_DIR: false
@@ -36,6 +36,14 @@ env:
 jobs:
   build:
     runs-on: ubuntu-20.04
+
+    name: Build ${{matrix.target}} Burn
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - target: 5.10
+          - target: 5.15
 
     steps:
     - name: Checkout
