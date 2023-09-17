@@ -14,5 +14,5 @@
 #sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
 
 # Add a feed source
-echo 'src-git small https://github.com/pweot/small-package/tree/86c005d02a4c1c5ae512fd5c1bc5178278f179b3' >>feeds.conf.default
+echo 'src-git small https://github.com/shiyu1314/onecloud-package.git' >>feeds.conf.default
 
